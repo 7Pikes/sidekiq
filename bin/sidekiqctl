@@ -12,12 +12,13 @@ class Sidekiqctl
   def self.print_usage
     puts "#{File.basename($0)} - stop a Sidekiq process from the command line."
     puts
-    puts "Usage: #{File.basename($0)} <command> <pidfile> <kill_timeout> [stop_timeout]"
+    puts "Usage: #{File.basename($0)} <command> <pidfile> [kill_timeout [stop_timeout]]"
     puts " where <command> is either 'quiet' or 'stop'"
     puts "       <pidfile> is path to a pidfile"
-    puts "       <kill_timeout> is number of seconds to wait until Sidekiq exits"
+    puts "       [kill_timeout] is number of seconds to wait until Sidekiq exits"
     puts "       (default: #{Sidekiqctl::DEFAULT_KILL_TIMEOUT}), after which Sidekiq will be KILL'd"
-    puts "       [stop_timeout] is number of seconds to wait for all jobs to complete gracefully when using shutdown (default: #{Sidekiqctl::DEFAULT_STOP_TIMEOUT})"
+    puts "       [stop_timeout] is number of seconds to wait for all jobs to complete gracefully when using shutdown"
+    puts "       (default: #{Sidekiqctl::DEFAULT_STOP_TIMEOUT})"
     puts
     puts "Be sure to set the kill_timeout LONGER than Sidekiq's -t timeout.  If you want"
     puts "to wait 60 seconds for jobs to finish, use `sidekiq -t 60` and `sidekiqctl stop"
